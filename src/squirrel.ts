@@ -1,9 +1,24 @@
-interface INode {
+type INode = {
   tagName: string;
-  children?: INode;
+  children?: IChildren;
   props?: Object;
 }
 
+type IChildren = INode | string | number;
+
+function renderChildren(children: IChildren) {
+  if (typeof children === 'undefined') {
+    return '';
+  }
+
+  if (typeof children === 'string' || typeof children === 'number') {
+    return children;
+  }
+
+  return children;
+}
+
 export function render({ tagName, children, props }: INode): string {
-  return `<${tagName}></${tagName}>`;
+  const childrenString = renderChildren(children);
+  return `<${tagName}>${childrenString}</${tagName}>`;
 }

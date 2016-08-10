@@ -15,4 +15,20 @@ describe('squirrel', () => {
       '<p></p>'
     );
   });
+
+  it('should render 1-level template with text children and without props', () => {
+    expect(render({
+      tagName: 'div',
+      children: 'Hello world',
+    })).toBe(
+      '<div>Hello world</div>'
+    );
+
+    expect(render({
+      tagName: 'div',
+      children: 1,
+    })).toBe(
+      '<div>1</div>'
+    );
+  });
 });
