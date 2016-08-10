@@ -16,7 +16,7 @@ describe('squirrel', () => {
     );
   });
 
-  it('should render 1-level template with text children and without props', () => {
+  it('should render 1-level template with text / numeric children and without props', () => {
     expect(render({
       tagName: 'div',
       children: 'Hello world',
@@ -29,6 +29,19 @@ describe('squirrel', () => {
       children: 1,
     })).toBe(
       '<div>1</div>'
+    );
+  });
+
+  it('should render 1-level template with text / numeric children and props', () => {
+    expect(render({
+      tagName: 'div',
+      children: 'Hello world',
+      props: {
+        'data-title': 'Greeting',
+        'data-date': '08-10-2016',
+      },
+    })).toBe(
+      '<div data-title="Greeting" data-date="08-10-2016">Hello world</div>'
     );
   });
 });

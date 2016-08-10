@@ -1,24 +1,31 @@
 type INode = {
   tagName: string;
   children?: IChildren;
-  props?: Object;
+  props?: IProps;
 }
 
 type IChildren = INode | string | number;
 
-function renderChildren(children: IChildren) {
-  if (typeof children === 'undefined') {
-    return '';
-  }
-
-  if (typeof children === 'string' || typeof children === 'number') {
-    return children;
-  }
-
-  return children;
+type IProps = {
+  [key: string]: any;
 }
 
-export function render({ tagName, children, props }: INode): string {
+function renderChildren(children: IChildren): string {
+  if (typeof children === 'string' || typeof children === 'number') {
+    return children.toString();
+  }
+
+  return '';
+}
+
+function renderProps(props: IProps): string {
+  return Object.keys(props).reduce((acc, key, i) => (
+    acc + ` ${key}="${props[key]}"`
+  ), '');
+}
+
+export function render({ tagName, children = '', props = {} }: INode): string {
   const childrenString = renderChildren(children);
-  return `<${tagName}>${childrenString}</${tagName}>`;
+  const propsString = renderProps(props);
+  return `<${tagName}${propsString}>${childrenString}</${tagName}>`;
 }
