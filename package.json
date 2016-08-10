@@ -1,0 +1,24 @@
+{
+  "name": "json-parser",
+  "version": "1.0.0",
+  "description": "Custom JSON parser written in typescript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1ven/json-parser.git"
+  },
+  "keywords": [
+    "json",
+    "parser",
+    "typescript"
+  ],
+  "author": "1ven",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1ven/json-parser/issues"
+  },
+  "homepage": "https://github.com/1ven/json-parser#readme"
+}
