@@ -7,6 +7,7 @@
     "target": "es5"
   },
   "files": [
+    "./typings/index.d.ts",
     "./src/index.ts"
   ]
 }
