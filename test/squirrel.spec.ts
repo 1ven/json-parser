@@ -3,15 +3,21 @@ import { render } from '../src/squirrel';
 
 describe('squirrel', () => {
   it('should render 1-level template without children and props', () => {
-    expect(render({ tagName: 'div' })).toBe(
+    expect(render({
+      tagName: 'div'
+    })).toBe(
       '<div></div>'
     );
 
-    expect(render({ tagName: 'span' })).toBe(
+    expect(render({
+      tagName: 'span'
+    })).toBe(
       '<span></span>'
     );
 
-    expect(render({ tagName: 'p' })).toBe(
+    expect(render({
+      tagName: 'p'
+    })).toBe(
       '<p></p>'
     );
   });
@@ -42,6 +48,17 @@ describe('squirrel', () => {
       },
     })).toBe(
       '<div data-title="Greeting" data-date="08-10-2016">Hello world</div>'
+    );
+  });
+
+  it('should render 2-level template without children and props', () => {
+    expect(render({
+      tagName: 'div',
+      children: {
+        tagName: 'div',
+      },
+    })).toBe(
+      '<div><div></div></div>'
     );
   });
 });

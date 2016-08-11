@@ -11,11 +11,11 @@ type IProps = {
 }
 
 function renderChildren(children: IChildren): string {
-  if (typeof children === 'string' || typeof children === 'number') {
-    return children.toString();
-  }
-
-  return '';
+  return typeof children === 'string' || typeof children === 'number' ? (
+    children.toString()
+  ) : (
+    render(children)
+  );
 }
 
 function renderProps(props: IProps): string {
