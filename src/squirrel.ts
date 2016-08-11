@@ -4,7 +4,7 @@ type INode = {
   props?: IProps;
 }
 
-type IChildren = INode | string | number;
+type IChildren = Array<INode> | INode | string | number;
 
 type IProps = {
   [key: string]: any;
@@ -13,6 +13,8 @@ type IProps = {
 function renderChildren(children: IChildren): string {
   return typeof children === 'string' || typeof children === 'number' ? (
     children.toString()
+  ) : children instanceof Array ? (
+    children.map(render).join('')
   ) : (
     render(children)
   );

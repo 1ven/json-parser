@@ -61,4 +61,34 @@ describe('squirrel', () => {
       '<div><div></div></div>'
     );
   });
+
+  it('should render 2-level template with children and props', () => {
+    expect(render({
+      tagName: 'div',
+      children: {
+        tagName: 'div',
+        children: 'Hello',
+        props: {
+          'data-title': 'Greeting',
+        },
+      },
+    })).toBe(
+      '<div><div data-title="Greeting">Hello</div></div>'
+    );
+  });
+
+  it('should render 2-level template with array of children', () => {
+    expect(render({
+      tagName: 'div',
+      children: [{
+        tagName: 'div',
+        children: 'Children 1',
+      }, {
+        tagName: 'div',
+        children: 'Children 2',
+      }],
+    })).toBe(
+      '<div><div>Children 1</div><div>Children 2</div></div>'
+    );
+  });
 });
