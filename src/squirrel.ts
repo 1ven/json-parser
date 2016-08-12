@@ -1,7 +1,7 @@
 type INode = {
   tagName: string;
-  children?: IChildren;
-  props?: IProps;
+  children: IChildren;
+  props: IProps;
 }
 
 type IChildren = Array<INode> | INode | string | number;
