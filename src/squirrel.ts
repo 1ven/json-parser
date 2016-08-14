@@ -29,5 +29,9 @@ function renderProps(props: IProps): string {
 export function render({ tagName, children = '', props = {} }: INode): string {
   const childrenString = renderChildren(children);
   const propsString = renderProps(props);
-  return `<${tagName}${propsString}>${childrenString}</${tagName}>`;
+  return (
+    `<${tagName}${propsString}>` +
+      childrenString +
+    `<${tagName}>`
+  );
 }
